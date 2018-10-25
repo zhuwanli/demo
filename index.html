@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选项卡</title>
+	<script src="../demo12/jquery-1.12.4.js"></script>
+</head>
+<style>
+*{
+	margin: 0px;
+	padding: 0px;
+}
+ul{
+	list-style: none;
+	height: 45px;
+	position: relative;
+}
+.button{
+	margin-left: 14px;
+}
+.button	li{
+	position: absolute;
+	bottom: 0;
+	width: 245px;
+	height: 35px;
+	border-radius:5px 5px 0 0;
+	border:1px solid #000;
+	font-size: 20px;
+	text-align: center;
+	line-height: 35px;
+	font-family: weight;
+	display: inline-block;
+	margin-right: 10px;
+	background: #ccc;
+	cursor: pointer;
+	transition: height 0.3s;
+	vertical-align: bottom;
+	}
+.button	li:nth-child(1)
+{
+	left: 0;
+}
+.button	li:nth-child(2)
+{
+	left: 250px;
+}
+.button	li:nth-child(3)
+{
+	left: 500px;
+}
+.button .active{
+		height: 45px;
+		background: #fff;
+}
+.button li:hover{
+	background: rgb(189,249,255);
+
+}
+.content {
+	width: 800px;
+	height: 600px;
+	background: #000;
+	color: white;
+	font-size: 40px;
+	text-align: center;
+	line-height: 600px;
+	position: relative;
+}
+.content li{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	opacity: 0;
+}
+.content .show{
+	opacity: 1;
+}
+
+</style>
+<body>
+	<ul class="button">
+		<li class="active">Html</li>
+		<li>Css</li>
+		<li>Js</li>
+	</ul>
+	<ul class="content">
+		<li class="show">这是Html内容</li>
+		<li>这是Css内容</li>
+		<li>这是Js内容</li>
+	</ul>
+	<script>
+		$('.button li').on('click',function(){
+			current=$('.button li').index($(this));
+			show(current)
+
+		})
+		function show(x){
+			$('.content li').eq(x).addClass('show').siblings().removeClass('show');
+			$('.button li').eq(x).addClass('active').siblings().removeClass('active');
+		}
+		
+	</script>
+</body>
+</html>
